@@ -80,7 +80,7 @@ def tell_day():
         speak("The day is " + day_of_the_week)
 
 
-def tellTime():
+def tell_time():
     # This method will give the time
     time = str(datetime.datetime.now())
 
@@ -89,40 +89,40 @@ def tellTime():
     # nd then after slicing we can get time
     print(time)
     hour = time[11:13]
-    min = time[14:16]
-    speak( "The time is sir" + hour + "Hours and" + min + "Minutes")
+    minute = time[14:16]
+    speak("The time is sir" + hour + "Hours and" + minute + "Minutes")
 
 
-def Hello():
+def greeting():
     # This function is for when the assistant
     # is called it will say hello and then
     # take query
     speak("hello sir I am your desktop assistant. Tell me how may I help you ")
 
 
-def Take_query():
+def take_query():
     # calling the Hello function for
     # making it more interactive
-    Hello()
+    greeting()
 
     # This loop is infinite as it will take
     # our queries continuously until and unless
     # we do not say bye to exit or terminate
     # the program
-    while (True):
+    while True:
 
         # taking the query and making it into
-        # lower case so that most of the times
-        # query matches and we get the perfect
+        # lower case so that most of the time
+        # query matches, and we get the perfect
         # output
         query = take_command().lower()
-        if "open geeksforgeeks" in query:
-            speak("Opening GeeksforGeeks ")
+        if "open youtube" in query:
+            speak("Opening YouTube ")
 
             # in the open method we just to give the link
-            # of the website and it automatically open
+            # of the website, and it automatically opens
             # it in your default browser
-            webbrowser.open("www.geeksforgeeks.com")
+            webbrowser.open("www.youtube.com")
             continue
 
         elif "open google" in query:
@@ -130,22 +130,27 @@ def Take_query():
             webbrowser.open("www.google.com")
             continue
 
+        elif "open netflix" in query:
+            speak("Opening Netflix ")
+            webbrowser.open("www.netflix.com")
+            continue
+
         elif "which day it is" in query:
             tell_day()
             continue
 
-        elif "tell me the time" in query:
-            tellTime()
+        elif "what time is it" in query or "what is the time" in query:
+            tell_time()
             continue
 
         # this will exit and terminate the program
         elif "bye" in query:
-            speak("Bye. Check Out GFG for more exciting things")
+            speak("Bye. don't hesitate don't to ask for my assistance")
             exit()
 
-        elif "from wikipedia" in query:
+        elif "from wikipedia" in query or "search for" in query:
 
-            # if any one wants to have a information
+            # if any one wants to have an information
             # from wikipedia
             speak("Checking the wikipedia ")
             query = query.replace("wikipedia", "")
@@ -157,11 +162,11 @@ def Take_query():
             speak("According to wikipedia")
             speak(result)
 
-        elif "tell me your name" in query:
-            speak("I am Jarvis. Your desktop Assistant")
+        elif "tell me your name" in query or "what is your name" in query or "what's your name" in query:
+            speak("I am Jaafar. Your Genie, sorry I mean your Assistant")
 
 
 if __name__ == '__main__':
     # main method for executing
     # the functions
-    Take_query()
+    take_query()
