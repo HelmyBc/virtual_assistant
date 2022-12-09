@@ -3,6 +3,7 @@ import speech_recognition as sr
 import webbrowser
 import datetime
 import wikipedia
+import pywhatkit
 
 
 # this method is for taking the commands
@@ -97,7 +98,7 @@ def greeting():
     # This function is for when the assistant
     # is called it will say hello and then
     # take query
-    speak("hello sir I am your desktop assistant. Tell me how may I help you ")
+    speak("hello sir I am your virtual assistant. Tell me how can I help you ")
 
 
 def take_query():
@@ -142,6 +143,10 @@ def take_query():
         elif "what time is it" in query or "what is the time" in query:
             tell_time()
             continue
+        elif 'play' in query:
+            song = query.replace('play', '')
+            speak('playing ' + song)
+            pywhatkit.playonyt(song)
 
         # this will exit and terminate the program
         elif "bye" in query:
