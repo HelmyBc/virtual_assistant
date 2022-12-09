@@ -157,12 +157,14 @@ def take_query():
             person = query.replace('who is', '')
             info = wikipedia.summary(person, 1)
             print(info)
+            speak("According to wikipedia")
             speak(info)
 
         elif 'what is' in query:
             thing = query.replace('what is', '')
             info = wikipedia.summary(thing, 1)
             print(info)
+            speak("According to wikipedia")
             speak(info)
 
         elif "search for" in query:
