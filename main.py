@@ -153,6 +153,18 @@ def take_query():
             speak("Bye. don't hesitate don't to ask for my assistance")
             exit()
 
+        elif 'who is' in query:
+            person = query.replace('who is', '')
+            info = wikipedia.summary(person, 1)
+            print(info)
+            speak(info)
+
+        elif 'what is' in query:
+            thing = query.replace('what is', '')
+            info = wikipedia.summary(thing, 1)
+            print(info)
+            speak(info)
+
         elif "search for" in query:
             # if any one wants to have an information
             # from wikipedia
@@ -162,7 +174,7 @@ def take_query():
             # it will give the summary of 4 lines from
             # wikipedia we can increase and decrease
             # it also.
-            result = wikipedia.summary(query, sentences=2)
+            result = wikipedia.summary(query, sentences=1)
             speak("According to wikipedia")
             speak(result)
 
