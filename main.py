@@ -153,17 +153,16 @@ def take_query():
             speak("Bye. don't hesitate don't to ask for my assistance")
             exit()
 
-        elif "from wikipedia" in query or "search for" in query:
-
+        elif "search for" in query:
             # if any one wants to have an information
             # from wikipedia
             speak("Checking the wikipedia ")
-            query = query.replace("wikipedia", "")
+            query = query.replace("search for", "")
 
             # it will give the summary of 4 lines from
             # wikipedia we can increase and decrease
             # it also.
-            result = wikipedia.summary(query, sentences=4)
+            result = wikipedia.summary(query, sentences=2)
             speak("According to wikipedia")
             speak(result)
 
