@@ -4,6 +4,7 @@ import webbrowser
 import datetime
 import wikipedia
 import pywhatkit
+import pyjokes
 
 
 # this method is for taking the commands
@@ -117,71 +118,80 @@ def take_query():
         # query matches, and we get the perfect
         # output
         query = take_command().lower()
-        if "open youtube" in query:
-            speak("Opening YouTube ")
+        if "amigo" in query:
+            query = query[query.find("amigo") + 5:]
 
-            # in the open method we just to give the link
-            # of the website, and it automatically opens
-            # it in your default browser
-            webbrowser.open("www.youtube.com")
-            continue
+            if "open youtube" in query:
+                speak("Opening YouTube ")
 
-        elif "open google" in query:
-            speak("Opening Google ")
-            webbrowser.open("www.google.com")
-            continue
+                # in the open method we just to give the link
+                # of the website, and it automatically opens
+                # it in your default browser
+                webbrowser.open("www.youtube.com")
+                continue
 
-        elif "open netflix" in query:
-            speak("Opening Netflix ")
-            webbrowser.open("www.netflix.com")
-            continue
+            elif "open google" in query:
+                speak("Opening Google ")
+                webbrowser.open("www.google.com")
+                continue
 
-        elif "which day it is" in query:
-            tell_day()
-            continue
+            elif "open netflix" in query:
+                speak("Opening Netflix ")
+                webbrowser.open("www.netflix.com")
+                continue
 
-        elif "what time is it" in query or "what is the time" in query:
-            tell_time()
-            continue
-        elif 'play' in query:
-            song = query.replace('play', '')
-            speak('playing ' + song)
-            pywhatkit.playonyt(song)
+            elif "which day it is" in query:
+                tell_day()
+                continue
 
-        # this will exit and terminate the program
-        elif "bye" in query:
-            speak("Bye. don't hesitate don't to ask for my assistance")
-            exit()
+            elif "what time is it" in query or "what is the time" in query:
+                tell_time()
+                continue
+            elif 'play' in query:
+                song = query.replace('play', '')
+                speak('playing ' + song)
+                pywhatkit.playonyt(song)
 
-        elif 'who is' in query:
-            person = query.replace('who is', '')
-            info = wikipedia.summary(person, 1)
-            print(info)
-            speak("According to wikipedia")
-            speak(info)
+            # this will exit and terminate the program
+            elif "bye" in query:
+                speak("Bye. don't hesitate don't to ask for my assistance")
+                exit()
 
-        elif 'what is' in query:
-            thing = query.replace('what is', '')
-            info = wikipedia.summary(thing, 1)
-            print(info)
-            speak("According to wikipedia")
-            speak(info)
+            elif 'who is' in query:
+                person = query.replace('who is', '')
+                info = wikipedia.summary(person, 1)
+                print(info)
+                speak("According to wikipedia")
+                speak(info)
 
-        elif "search for" in query:
-            # if any one wants to have an information
-            # from wikipedia
-            speak("Checking the wikipedia ")
-            query = query.replace("search for", "")
+            elif 'what is' in query:
+                thing = query.replace('what is', '')
+                info = wikipedia.summary(thing, 1)
+                print(info)
+                speak("According to wikipedia")
+                speak(info)
 
-            # it will give the summary of 4 lines from
-            # wikipedia we can increase and decrease
-            # it also.
-            result = wikipedia.summary(query, sentences=1)
-            speak("According to wikipedia")
-            speak(result)
+            elif "search for" in query:
+                # if any one wants to have an information
+                # from wikipedia
+                speak("Checking the wikipedia ")
+                query = query.replace("search for", "")
 
-        elif "tell me your name" in query or "what is your name" in query or "what's your name" in query:
-            speak("I am Jaafar. Your Genie, sorry I mean your Assistant")
+                # it will give the summary of 4 lines from
+                # wikipedia we can increase and decrease
+                # it also.
+                result = wikipedia.summary(query, sentences=1)
+                speak("According to wikipedia")
+                speak(result)
+
+            elif 'joke' in query:
+                speak(pyjokes.get_joke())
+
+            elif "tell me your name" in query or "what is your name" in query or "what's your name" in query:
+                speak("I am Jaafar. Your Genie, sorry I mean your Assistant")
+
+            else:
+                speak("Please say the command again, I couldn't understand")
 
 
 if __name__ == '__main__':
