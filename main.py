@@ -80,7 +80,7 @@ def tell_day():
     if day in day_dict.keys():
         day_of_the_week = day_dict[day]
         print(day_of_the_week)
-        speak("The day is " + day_of_the_week)
+        speak("Today is " + day_of_the_week)
 
 
 def tell_time():
