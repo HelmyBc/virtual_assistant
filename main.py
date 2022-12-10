@@ -22,6 +22,7 @@ def take_command():
 
         # seconds of non-speaking audio before
         # a phrase is considered complete
+
         r.pause_threshold = 0.7
         audio = r.listen(source)
 
@@ -140,7 +141,7 @@ def take_query():
                 webbrowser.open("www.netflix.com")
                 continue
 
-            elif "which day it is" in query:
+            elif "which day is it" in query or "what is the date" in query or "what's the date" in query:
                 tell_day()
                 continue
 
